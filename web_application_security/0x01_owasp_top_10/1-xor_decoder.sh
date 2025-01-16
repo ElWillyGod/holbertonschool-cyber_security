@@ -1,6 +1,6 @@
 #!/bin/bash
 
-password=$(echo "${1#'{xor}'}" | base64 -d)
+password=$(echo "${1#'{xor}'}" | base64 -d | tr -d '\0')
 
 passwordCrack=""
 
