@@ -1,2 +1,10 @@
 #!/bin/bash
-python3 -c "from base64 import b64decode; print(bytes(byte ^ 0x5f for byte in b64decode('$1'.replace('{xor}', ''))).decode('utf-8'))"
+password=$(echo "${1#'{xor}'}" | base64 -d | tr -d '\0')
+
+passwordCrack=""
+
+for ((i=0; i< ${#password}; i++)); do 
+	passwordCrack="$passwordCrack$(printf '\\x%x' $(printf $(($(printf '%d' "'${password:$i:1}") ^ 95))))"
+done
+
+echo -e "$passwordCrack"
