@@ -1,2 +1,3 @@
 #!/bin/bash
-cat auth.log | grep -oP "(?<=user=)[^ ]+" | sort -u | paste -sd ,
+grep -oP '(?<=new user: name=)[^ ]+' auth.log | cut -d',' -f1 | sort -u | paste -sd ,
+
