@@ -1,5 +1,7 @@
 class HelloWorld
+  @message = "Hello, World!"
+
   def print_hello
-    puts "Hello, World!"
+    puts @message
   end
 end
