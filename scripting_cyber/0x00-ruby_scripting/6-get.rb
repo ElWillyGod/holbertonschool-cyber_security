@@ -8,8 +8,7 @@ def get_request(url)
 
   body = JSON.pretty_generate(JSON.parse(response.body))
 
-  puts "Response code: #{response.code} #{response.message}"
+  puts "Response status: #{response.code} #{response.message}"
 
-  puts "Response body:"
-  puts body
+  puts "Response body: \n#{body}"
 end
