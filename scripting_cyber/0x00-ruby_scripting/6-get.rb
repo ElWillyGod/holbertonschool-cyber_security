@@ -10,5 +10,5 @@ def get_request(url)
 
   puts "Response code: #{response.code} #{response.message}"
 
-  puts "Response body:\n#{body}"
+  puts "Response body: \n#{body}\n"
 end
