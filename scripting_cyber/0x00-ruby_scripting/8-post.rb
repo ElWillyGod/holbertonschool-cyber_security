@@ -5,12 +5,7 @@ require 'uri'
 def post_request(url, body_params)
   uri = URI.parse(url)
 
-  if uri.scheme == 'https'
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-  else
-    http = Net::HTTP.new(uri.host, uri.port)
-  end
+  http = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https')
 
   request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
   request.body = body_params.to_json
