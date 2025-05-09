@@ -1,4 +1,4 @@
-require 'degest'
+require 'digest'
 
 def crack(hashed_password,dictionary_file)
 
