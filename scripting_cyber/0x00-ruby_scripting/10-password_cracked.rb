@@ -1,13 +1,14 @@
 require 'degest'
 
-def crack(hash, dictionary)
+def crack(hashed_password,dictionary_file)
 
-  File.foreach(dictionary) do |line|
+
+  File.foreach(dictionary_file) do |line|
 
     password = line.strip
     hashed = Digest::SHA256.hexdigest(password)
 
-    if (hashed == hash)
+    if (hashed == hashed_password)
       puts "Password found: #{password}"
       return
     end
